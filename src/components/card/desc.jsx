@@ -16,7 +16,7 @@ function Product_Desc({ cart, handleAdd, handleIncrement, handleDecrement }) {
 
       <div className="cart-btn-wrapper">
         <div className="cart-handler">
-          <div>
+          <div className="cart-op-btns">
             <img className="minus" src="/images/icon-minus.svg" onClick={() => handleDecrement(1)}/>
             <p className="number">cart.length</p>
             <img className="plus" src="/images/icon-plus.svg" onClick={() => handleIncrement(1)}/>
