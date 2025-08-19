@@ -12,6 +12,7 @@ function App() {
       price: 125,
     },
   ];
+  console.log(cart)
   function handleIncrement(id) {
     const cartCopy = [...cart];
     const product = cartCopy.find((p) => p.id === id);
@@ -40,8 +41,12 @@ function App() {
   }
   return (
     <div>
-      <NavBar cart={cart} />
-      <Product_Card />
+      <NavBar
+      cart={cart}
+      />
+      <Product_Card
+      cart={cart}
+      />
     </div>
   );
 }

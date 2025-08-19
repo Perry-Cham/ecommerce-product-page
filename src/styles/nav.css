@@ -5,6 +5,7 @@
   padding: 1rem 0.5rem;
   position: relative;
   border-bottom:solid 2px grey;
+  color:var(--dark-grayish-blue);
 }
 .avatar-img {
   width: 50px;
