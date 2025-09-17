@@ -1,5 +1,10 @@
+import {useContext, useState} from 'react'
 import Cart from "./cart/cart";
-function NavBar({ cart }) {
+import {CartContext} from "../cartContext"
+function NavBar() {
+  const [cartIsOpen, setCartIsOpen] = useState(false)
+  const cart = useContext(CartContext)
+  console.log(cart)
   return (
     <header className="header">
       <div className="logo-wrapper">
@@ -16,10 +21,10 @@ function NavBar({ cart }) {
       </div>
 
       <div className="cart-avatar-wrapper">
-        <img className="cart-icon" src="/images/icon-cart.svg" />
+        <img className="cart-icon" src="/images/icon-cart.svg" onClick={() => setCartIsOpen(!cartIsOpen)}/>
         <img className="avatar-img" src="/images/image-avatar.png" />
       </div>
-      <Cart />
+     { cartIsOpen  && <Cart />}
     </header>
   );
 }

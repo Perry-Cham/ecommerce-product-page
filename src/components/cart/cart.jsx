@@ -1,27 +1,31 @@
 import Cart_Entry from './cart-entry'
+import {useContext} from 'react'
+import {CartContext, CartHandlerContext} from '../../cartContext'
 
 
-function Cart({cart, handleDelete}){
+function Cart(){
+  const cart = useContext(CartContext)
+  console.log(cart)
   return (
     <div className="cart">
       <div className="cart-header">
         <p>Cart</p>
         <img className="cart-icon" src="./images/icon-cart.svg"></img>
       </div>
-      <li className="cart-item-wrapper">
-        { cart ? cart.map((item) => {
-          < Cart_Entry
+      <ul className="cart-item-wrapper">
+        { cart.length > 0 ? cart.map((item) => {
+          return(<Cart_Entry
+          key={Date.now()}
           name={item.name}
           quantity={item.quantity}
           price={item.price}
-          handleDelete={handleDelete}
-          />
+          />)
         }): 
           <div className="no-item-wrapper">
             <p className="no-item-text">Your cart is empty</p>
           </div>
         }
-      </li>
+      </ul>
       <button className="checkout-btn">Checkout</button>
     </div>)
 }

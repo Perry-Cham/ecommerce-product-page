@@ -1,4 +1,8 @@
-function Product_Desc({ cart, handleAdd, handleIncrement, handleDecrement }) {
+import {useContext} from "react"
+import {CartContext, CartHandlerContext} from "../../cartContext"
+function Product_Desc() {
+  const cart = useContext(CartContext)
+  const {handleIncrement, handleDecrement, handleAdd} = useContext(CartHandlerContext)
   return (
     <div>
       <h2 className="company-heading">SNEAKER COMPANY</h2>
@@ -18,7 +22,7 @@ function Product_Desc({ cart, handleAdd, handleIncrement, handleDecrement }) {
         <div className="cart-handler">
           <div className="cart-op-btns">
             <img className="minus" src="/images/icon-minus.svg" onClick={() => handleDecrement(1)}/>
-            <p className="number">{cart.length}</p>
+            <p className="number">{cart[0] && cart[0].quantity || 0}</p>
             <img className="plus" src="/images/icon-plus.svg" onClick={() => handleIncrement(1)}/>
           </div>
 

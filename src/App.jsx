@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CartContext, CartHandlerContext } from "./cartContext"
 import NavBar from "./components/navbar";
 import Product_Card from "./components/card/product_card";
 import "./styles/styles.css";
@@ -12,19 +13,36 @@ function App() {
       price: 125,
     },
   ];
-  console.log(cart)
   function handleIncrement(id) {
     const cartCopy = [...cart];
-    const product = cartCopy.find((p) => p.id === id);
-    product.quantity += 1;
-    setCart(cartCopy);
+    const productInCart = cartCopy.find((p) => p.id === id);
+    if (!productInCart) {
+      const productsCopy = [...products];
+      const product = productsCopy.find((p) => p.id === id);
+      console.log(product, products, id)
+      product.quantity = 1;
+      cartCopy.push(product)
+      setCart(cartCopy);
+    } else {
+      productInCart.quantity += 1
+      setCart(cartCopy)
+    }
   }
   function handleDecrement(id) {
     const cartCopy = [...cart];
-    const product = cartCopy.find((p) => p.id === id);
-    product.quantity -= 1;
-    if (product.quantity < 1) product.quantity = 1;
-    setCart(cartCopy);
+    const productInCart = cartCopy.find((p) => p.id === id);
+    if (!productInCart) {
+      const productsCopy = [...products];
+      const product = productsCopy.find((p) => p.id === id);
+      console.log(product, products, id)
+      product.quantity = 1;
+      cartCopy.push(product)
+      setCart(cartCopy);
+    } else {
+      productInCart.quantity -= 1
+      if (productInCart.quantity < 1) productInCart.quantity = 1;
+      setCart(cartCopy)
+    }
   }
   function handleDelete() {
     const cartCopy = [...cart];
@@ -40,14 +58,14 @@ function App() {
     setCart(cartCopy);
   }
   return (
-    <div>
-      <NavBar
-      cart={cart}
-      />
-      <Product_Card
-      cart={cart}
-      />
-    </div>
+    <CartContext.Provider value={cart}>
+      <CartHandlerContext.Provider value={{ handleIncrement, handleDecrement, handleAdd, handleDelete }}>
+        <div>
+          <NavBar />
+          <Product_Card />
+        </div>
+      </CartHandlerContext.Provider>
+    </CartContext.Provider>
   );
 }
 
