@@ -1,17 +1,11 @@
 import Product_Desc from "./desc";
 import Product_Card_Gallery from "./gallery";
 
-function Product_Card({ cart, handleAdd, handleIncrement, handleDecrement }) {
+function Product_Card() {
   return (
     <div className="product-card">
       <Product_Card_Gallery />
-
-      <Product_Desc
-        cart={cart}
-        handleAdd={handleAdd}
-        handleIncrement={handleIncrement}
-        handleDecrement={handleDecrement}
-      />
+      <Product_Desc/>
     </div>
   );
 }

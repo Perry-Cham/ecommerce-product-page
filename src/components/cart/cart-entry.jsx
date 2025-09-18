@@ -7,9 +7,9 @@ function Cart_Entry({name, price, quantity}){
     <img className="cart-thumbnail" src="/images/image-product-1-thumbnail.jpg"/>
       <div className="cart-name-wrapper">
         <p className="cart-name">{name}</p>
-        <p className="cart-price">{price} × {quantity} <span>{price * quantity}</span></p>
+        <p className="cart-price">${price} × {quantity} <span className="total-price">${price * quantity}</span></p>
       </div>
-      <img onClick={() => handleDelete(1)} className="delete-icon" src="/images/icon-delete.svg" /> 
+      <img onClick={() => handleDelete(1)} className="delete icon" src="/images/icon-delete.svg" alt="trash can icon for deleting stuff"/> 
     </li>
   
 

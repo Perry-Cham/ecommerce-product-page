@@ -10,7 +10,6 @@ function Cart(){
     <div className="cart">
       <div className="cart-header">
         <p>Cart</p>
-        <img className="cart-icon" src="./images/icon-cart.svg"></img>
       </div>
       <ul className="cart-item-wrapper">
         { cart.length > 0 ? cart.map((item) => {
@@ -26,7 +25,7 @@ function Cart(){
           </div>
         }
       </ul>
-      <button className="checkout-btn">Checkout</button>
+   {cart.length > 0 &&  <button className="checkout-btn">Checkout</button>}
     </div>)
 }
 

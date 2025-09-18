@@ -6,6 +6,7 @@ import "./styles/styles.css";
 
 function App() {
   const [cart, setCart] = useState([]);
+  
   const products = [
     {
       id: 1,
@@ -44,13 +45,13 @@ function App() {
       setCart(cartCopy)
     }
   }
-  function handleDelete() {
+  function handleDelete(id) {
     const cartCopy = [...cart];
     const product = cartCopy.find((p) => p.id === id);
-    cartCopy.splice(cartCopy.indexOf(p), 1);
+    cartCopy.splice(cartCopy.indexOf(product), 1);
     setCart(cartCopy);
   }
-  function handleAdd() {
+  function handleAdd(id) {
     const cartCopy = [...cart];
     const product = products.find((p) => p.id === id);
     product.quantity = 1;
