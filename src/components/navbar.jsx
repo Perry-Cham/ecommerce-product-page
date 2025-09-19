@@ -1,11 +1,8 @@
-import {useContext, useState} from 'react'
+import {useState} from 'react'
 import Cart from "./cart/cart";
-import {CartContext} from "../cartContext"
 function NavBar() {
   const [cartIsOpen, setCartIsOpen] = useState(false)
   const [navIsOpen, setNavIsOpen] = useState(false)
-  const cart = useContext(CartContext)
-  console.log(cart)
   return (
     <header className="header">
       <div className="logo-wrapper">

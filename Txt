@@ -1,8 +1,16 @@
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
-import useCarousel from "./carouselHook"
+import { Carousel } from "@fancyapps/ui/dist/carousel/";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import "@fancyapps/ui/dist/carousel/carousel.css";
 import { useState, useEffect } from "react";
 function Product_Card_Gallery() {
+  useEffect(() => {
+    const container = document.getElementById("myCarousel");
+    const options = {
+      // Your custom options
+    };
+    Carousel(container, options).init();
+  }, [])
   const sources = [
     "/images/image-product-1.jpg",
     "/images/image-product-2.jpg",
@@ -12,29 +20,23 @@ function Product_Card_Gallery() {
 
   Fancybox.bind(["data-fancybox"], {})
   const condition = window.innerWidth > 600;
-  const [carouselRef] = useCarousel({})
   return (
     <div className="product-card-gallery">
-      {true &&
-        <div className="main-image">
-          <img src={`${sources[1]}`} />
+      {condition ? <div className="main-image">
+        <img src={`${sources[1]}`} />
+      </div> : <div class="f-carousel" id="myCarousel">
+        <div class="f-carousel_viewport">
+          <img class="f-carousel__slide" src={`${sources[0]}`} />
+          <img class="f-carousel__slide" src={`${sources[1]}`} />
+          <img class="f-carousel__slide" src={`${sources[2]}`} />
+          <img class="f-carousel__slide" src={`${sources[3]}`} />
         </div>
+        <button data-carousel-go-prev>⟵</button>
+        <button data-carousel-go-next>⟶</button>
+      </div>
       }
 
-      <div ref={carouselRef}>
-        <div className="f-carousel__slide">
-          <img className="w-[100px]" src={`${sources[0]}`} />
-        </div>
-        <div className="f-carousel__slide">
-          <img  className="w-[100px]" src={`${sources[1]}`} />
-        </div>
-        <div className="f-carousel__slide">
-          <img  className="w-[100px]" src={`${sources[2]}`} />
-        </div>
-        <div className="f-carousel__slide">
-          <img  className="w-[100px]" src={`${sources[3]}`} />
-        </div>
-      </div>
+
 
 
       <div className="thumbnails">
