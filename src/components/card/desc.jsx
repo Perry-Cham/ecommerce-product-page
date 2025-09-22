@@ -13,10 +13,9 @@ function Product_Desc() {
         weather can offer.
       </p>
       <div className="price-wrapper">
-        <p className="price new">$125.00</p>
-        <p className="discount">50%</p>
-      </div>
+        <p className="price new">$125.00         <span className="discount">50%</span></p>
       <p className="price old">$250.00</p>
+      </div>
 
       <div className="cart-btn-wrapper">
         <div className="cart-handler">

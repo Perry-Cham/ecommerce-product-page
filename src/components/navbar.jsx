@@ -20,7 +20,9 @@ function NavBar() {
       </div>
       
       <div className="cart-avatar-wrapper">
-        <img className="cart-icon" src="/images/icon-cart.svg" onClick={() => setCartIsOpen(!cartIsOpen)}/>
+        <img className="cart-icon" src="/images/icon-cart.svg" onClick={() => {
+        console.log(cartIsOpen)
+        setCartIsOpen(!cartIsOpen)}}/>
         <img className="avatar-img" src="/images/image-avatar.png" />
       </div>
      { cartIsOpen  && <Cart />}
